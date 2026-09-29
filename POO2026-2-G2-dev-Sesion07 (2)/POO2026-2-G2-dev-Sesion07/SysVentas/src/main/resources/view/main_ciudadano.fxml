@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="miContenedor" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pe.edu.upeu.sysventas.controller.CiudadanoController">
+   <children>
+      <VBox spacing="12.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Label text="Padrón de Ciudadanos" textFill="#1f3397">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+
+            <!-- CONSULTAR -->
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+               <children>
+                  <Label text="Consultar (nombre o CURP):" />
+                  <TextField fx:id="txtBuscar" onAction="#consultar" prefWidth="260.0" promptText="Escriba y presione Enter" />
+                  <Button mnemonicParsing="false" onAction="#consultar" styleClass="btn,btn-primary" text="Consultar" />
+                  <Button mnemonicParsing="false" onAction="#mostrarTodos" text="Ver todos" />
+               </children>
+            </HBox>
+
+            <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <!-- FORMULARIO DE CAPTURA -->
+                  <GridPane hgap="8.0" minWidth="360.0" prefWidth="380.0" vgap="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints minWidth="120.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                     </columnConstraints>
+                     <children>
+                        <Label maxWidth="1.7976931348623157E308" text="Formulario de Registro" GridPane.columnSpan="2147483647">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+
+                        <Label text="Nombre completo" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtNombreCompleto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label text="CURP" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtCurp" promptText="18 caracteres" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <Label text="Fecha de nacimiento" GridPane.rowIndex="3" />
+                        <DatePicker fx:id="dpFechaNacimiento" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                        <Label text="Domicilio" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtDomicilio" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                        <Label text="Estado civil" GridPane.rowIndex="5" />
+                        <ComboBox fx:id="cbxEstadoCivil" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                        <!-- BOTONES CRUD -->
+                        <FlowPane hgap="8.0" vgap="8.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="6">
+                           <children>
+                              <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" styleClass="btn,btn-success" text="Agregar" />
+                              <Button fx:id="btnModificar" mnemonicParsing="false" onAction="#modificar" styleClass="btn,btn-warning" text="Modificar" />
+                              <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" styleClass="btn,btn-danger" text="Eliminar" />
+                              <Button mnemonicParsing="false" onAction="#clearForm" styleClass="btn,btn-primary" text="Limpiar" />
+                           </children>
+                        </FlowPane>
+
+                        <Label fx:id="lbnMsg" maxWidth="1.7976931348623157E308" wrapText="true" GridPane.columnSpan="2147483647" GridPane.rowIndex="7" />
+                     </children>
+                  </GridPane>
+
+                  <!-- TABLA DE VISUALIZACIÓN -->
+                  <TableView fx:id="tableView" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
